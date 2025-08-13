@@ -14,20 +14,12 @@ export default class MnbTable extends React.Component {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        {this.props.data.length}
-                    </td>
-                    <td>
-                        {this.props.data.length}
-                    </td>
-                    <td>
-                        {this.props.data.length}
-                    </td>
-                    <td>
-                        {this.props.data.length}
-                    </td>                                                            
-                </tr>        
+                {this.props.data.map(d=><tr key={d.id}>
+                    <td>{d.id+1}</td>
+                    <td>{d.currency}</td>
+                    <td>{d.unit}</td>
+                    <td>{d.value}</td>
+                </tr>)}                                                                
             </tbody>
         </Table>
     }

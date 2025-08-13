@@ -61,7 +61,8 @@ export default class Mnb extends React.Component {
             const rateNodes = innerXmlDoc.getElementsByTagName('Rate');
 
             // 5️⃣ Map them into JS objects
-            const rates = Array.from(rateNodes).map(node => ({
+            const rates = Array.from(rateNodes).map((node, i) => ({
+                id: i,
                 currency: node.getAttribute('curr'),
                 unit: Number(node.getAttribute('unit')),
                 value: parseFloat(node.textContent.replace(',', '.')) // replace comma with dot
