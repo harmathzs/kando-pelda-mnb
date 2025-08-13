@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed. Use POST.' });
   }
 
-  const endpoint = 'https://www.mnb.hu/arfolyamok.asmx';
+  const endpoint = 'http://www.mnb.hu/arfolyamok.asmx';
   const reqBodyXml = `
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.mnb.hu/webservices/">
       <soapenv:Header/>
