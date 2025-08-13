@@ -31,10 +31,22 @@ export default class Mnb extends React.Component {
         .catch(console.warn)
         .finally(()=>{});
     }
+
+    loadMnbDataFromProxy() {
+        fetch('http://localhost:3000/mnb')
+        .then(res=>{
+            console.log(res);
+            return res.text();
+        })
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(console.warn);
+    }
     
     componentDidMount() {
         // load MNB data
-        this.loadMnbData();
+        this.loadMnbDataFromProxy();
     }
 
     render() {
