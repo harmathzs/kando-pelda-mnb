@@ -10,14 +10,15 @@ export default class Mnb extends React.Component {
     }
     
     loadMnbData() {
-        const endpoint = 'http://www.mnb.hu/arfolyamok.asmx';
+        const endpoint = 'https://www.mnb.hu/arfolyamok.asmx';
         const reqBodyXml = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.mnb.hu/webservices/"> <soapenv:Header/> <soapenv:Body> <web:GetCurrentExchangeRates/> </soapenv:Body></soapenv:Envelope>';
         fetch(endpoint, {
             method: 'POST',
             headers: {
-                contentType: 'application/xml', // SOAP
+                "Content-Type": 'text/xml; charset=utf-8', // SOAP
             },
             body: reqBodyXml,
+            SOAPAction: "https://www.mnb.hu/webservices/GetCurrentExchangeRates",
         })
         .then(res => {
             console.log(res);
