@@ -1,4 +1,6 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Table from 'react-bootstrap/Table';
 
 export default class MnbTable extends React.Component {
     render() {
