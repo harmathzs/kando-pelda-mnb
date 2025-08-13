@@ -82,9 +82,7 @@ export default class Mnb extends React.Component {
         return <Container>
             <Row>
                 <Col>
-                    <p>
-                        {this.state.mnbXml.length>0 ? <MnbTable data={this.state.rates} /> : 'Loading MNB data...'}
-                    </p>
+                    {this.state.mnbXml.length>0 ? <MnbTable data={this.state.rates} /> : <p>'Loading MNB data...'</p>}
                 </Col>    
             </Row>        
         </Container>
