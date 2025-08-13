@@ -19,6 +19,7 @@ export default class Mnb extends React.Component {
             },
             body: reqBodyXml,
             SOAPAction: "https://www.mnb.hu/webservices/GetCurrentExchangeRates",
+            credentials: 'omit',
         })
         .then(res => {
             console.log(res);
