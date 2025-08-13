@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 export default class Mnb extends React.Component {
     state = {
+        mnbXml: '',
         mnbData: []
     }
     
@@ -40,6 +41,7 @@ export default class Mnb extends React.Component {
         })
         .then(xml=>{
             console.log(xml);
+            this.setState({mnbXml: xml});
         })
         .catch(console.warn);
     }
@@ -53,7 +55,9 @@ export default class Mnb extends React.Component {
         return <Container>
             <Row>
                 <Col>
-                    <p>MNB</p>
+                    <p>
+                        {this.state.mnbXml.length>0 ? this.state.mnbXml : 'MNB'}
+                    </p>
                 </Col>    
             </Row>        
         </Container>
