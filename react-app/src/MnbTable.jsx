@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 export default class MnbTable extends React.Component {
     render() {
-        <Table striped bordered hover variant="dark">
+        return <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     <th>#</th>
