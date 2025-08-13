@@ -1,6 +1,6 @@
 // api/mnb.js (place this in the /api directory of your Vercel project)
 
-import fetch from 'node-fetch';
+//import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
