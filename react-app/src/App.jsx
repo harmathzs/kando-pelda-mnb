@@ -17,6 +17,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Home from "./Home";
 import Mnb from "./Mnb";
 
+import './App2.css';
+
 function App() {
   const [showHome, setShowHome] = useState(true);
   const [showMnb, setShowMnb] = useState(false);
