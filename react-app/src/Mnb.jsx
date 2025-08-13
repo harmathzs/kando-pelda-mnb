@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import MnbTable from "./MnbTable";
+
 export default class Mnb extends React.Component {
     state = {
         mnbXml: '',
@@ -81,7 +83,7 @@ export default class Mnb extends React.Component {
             <Row>
                 <Col>
                     <p>
-                        {this.state.mnbXml.length>0 ? this.state.mnbXml : 'MNB'}
+                        {this.state.mnbXml.length>0 ? <MnbTable data={this.state.rates} /> : 'Loading MNB data...'}
                     </p>
                 </Col>    
             </Row>        
