@@ -33,13 +33,13 @@ export default class Mnb extends React.Component {
     }
 
     loadMnbDataFromProxy() {
-        fetch('http://localhost:3000/mnb')
+        fetch('/api/mnb', {method: 'POST'})
         .then(res=>{
             console.log(res);
             return res.text();
         })
-        .then(res=>{
-            console.log(res);
+        .then(xml=>{
+            console.log(xml);
         })
         .catch(console.warn);
     }
