@@ -7,7 +7,8 @@ import Col from 'react-bootstrap/Col';
 export default class Mnb extends React.Component {
     state = {
         mnbXml: '',
-        mnbData: []
+        mnbData: [],
+        rates: []
     }
     
     loadMnbData() {
@@ -42,6 +43,30 @@ export default class Mnb extends React.Component {
         .then(xml=>{
             console.log(xml);
             this.setState({mnbXml: xml});
+
+            // 1️⃣ Parse the outer SOAP XML
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xml, 'text/xml');
+
+            // 2️⃣ Extract the inner escaped XML string
+            const innerXmlText = xmlDoc.getElementsByTagName('GetCurrentExchangeRatesResult')[0]
+                .textContent;
+
+            // 3️⃣ Parse the inner XML into a DOM too
+            const innerXmlDoc = parser.parseFromString(innerXmlText, 'text/xml');
+
+            // 4️⃣ Extract <Rate> elements
+            const rateNodes = innerXmlDoc.getElementsByTagName('Rate');
+
+            // 5️⃣ Map them into JS objects
+            const rates = Array.from(rateNodes).map(node => ({
+                currency: node.getAttribute('curr'),
+                unit: Number(node.getAttribute('unit')),
+                value: parseFloat(node.textContent.replace(',', '.')) // replace comma with dot
+            }));
+
+            console.log(rates); // ✅ Now you have usable JS objects!
+            this.setState({rates: rates});
         })
         .catch(console.warn);
     }
