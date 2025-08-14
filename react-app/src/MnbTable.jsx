@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 
 export default class MnbTable extends React.Component {
     render() {
-        return <Card bg="dark" variant="dark" style={{margin: '15px'}}>
+        return <Card bg="dark" variant="dark" className="text-white" style={{margin: '15px'}}>
             <Card.Body>
                 <Card.Title>MNB Rates</Card.Title>
                 <Card.Text>
