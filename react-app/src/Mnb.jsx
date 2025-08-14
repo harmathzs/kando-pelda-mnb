@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 import MnbTable from "./MnbTable";
 
@@ -83,7 +84,7 @@ export default class Mnb extends React.Component {
         return <Container>
             <Row>
                 <Col>
-                    {this.state.mnbXml.length>0 ? <MnbTable data={this.state.rates} /> : <p>'Loading MNB data...'</p>}
+                    {this.state.mnbXml.length>0 ? <MnbTable data={this.state.rates} /> : <Spinner animation="border" variant="secondary" />}
                 </Col>    
             </Row>        
         </Container>
