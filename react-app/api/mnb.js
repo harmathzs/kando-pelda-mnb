@@ -2,7 +2,16 @@
 
 //import fetch from 'node-fetch';
 
+var cachedData;
+var cachedDate;
+
 export default async function handler(req, res) {
+  const today = new Date(Date.now()).toISOString().slice(0, 10);
+  if (cachedData && cachedDate && cachedDate === today) {
+      console.log('Serving from cache');
+      return res.status(200).send(cachedData);
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed. Use POST.' });
   }
@@ -32,6 +41,9 @@ export default async function handler(req, res) {
     }
 
     const text = await response.text();
+    // ✅ Save to cache for today
+    cachedData = text;
+    cachedDate = today;
 
     // Return the XML response directly
     res.setHeader('Content-Type', 'text/xml');
